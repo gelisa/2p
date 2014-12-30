@@ -40,7 +40,10 @@ def getA(l,sigma,rSigma,K):
     for df in range(0,l+1):
         aL.append([])
         for b in range(0,l+1):
-            aL[df].append(CoeffB(l,b,df,sigma,rSigma,K))
+            if not b==df:
+                aL[df].append(CoeffB(l,b,df,sigma,rSigma,K))
+            else:
+                aL[df].append(CoeffB(l,b,df,sigma,rSigma,K)-1)
     A=np.array(aL)
     
     return A
@@ -54,13 +57,17 @@ def getPddMatrix(l,sigma):
     
     return pM
 
-l = 10
-sigma = 4.0
+l = 2
+
+sigma = 1.0
 rSigma = 2.0
 K = 1.0
-b = np.array([1.0]*(l+1))
+b = np.array([0.0]*(l+1))
 A = getA(l,sigma,rSigma,K)
+print(A)
+def null(A, eps=1e-15):
+    u, s, vh = np.linalg.svd(A)
+    null_space = np.compress(s <= eps, vh, axis=0)
+    return null_space.T
 
-
-x = np.linalg.solve(A,b)
-print(x)
+print(null(A).T)
