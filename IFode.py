@@ -3,7 +3,6 @@ import numpy as np
 import sys
 from math import *
 from scipy import special as sp
-import matplotlib.pyplot as plt
 import matplotlib
 # Force matplotlib to not use any Xwindows backend.
 matplotlib.use('Agg')
@@ -94,9 +93,9 @@ for i in range(l+1,2*(l+1)):
     F.append(soln[:,i])
     
 
-plt.figure()
+matplotlib.pyplot.figure()
 print('plt passed')
 for i in range(l+1):
-    plt.plot(t,I[i],label='I['+str(i)+']')
-plt.legend(loc=0)
-plt.savefig(str(l)+'-'+str(m)+'-'+str(sigma)+'-'+str(rSigma)+'-'+str(ki)+'-'+str(kf)+'.png')
+    matplotlib.pyplot.plot(t,I[i],label='I['+str(i)+']')
+matplotlib.pyplot.legend(loc=0)
+matplotlib.pyplot.savefig(str(l)+'-'+str(m)+'-'+str(sigma)+'-'+str(rSigma)+'-'+str(ki)+'-'+str(kf)+'.png')
