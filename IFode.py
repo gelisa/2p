@@ -46,4 +46,52 @@ def dFdt(l,m,sigma,ki,kf,I,F):
     
     return dFdt
 
+def dIdt(l,m,sigma,rSigma,ki,kf,I,F):
+    dIdt=[]
+    for d in range(l+1):
+        dIddt=m-I[d]
+        for i in range(l+1):
+            dIddt+=kf*F[i]*G(i,rSigma)*Pdd(l,i,d,sigma)
+        dIdt.append(dIddt)
+    
+    return dIdt
 
+def dydt(l,m,sigma,rSigma,ki,kf,y):
+    I=y[0:l+1]
+    F=y[l+1:]
+    return dIdt(l,m,sigma,rSigma,ki,kf,I,F)+dFdt(l,m,sigma,ki,kf,I,F)
+
+
+l=15
+m=4
+sigma=3.0
+rSigma=0.5
+ki=2.0
+kf=2.0
+t=np.linspace(0, 10., 100)
+def f(y,t):
+    global m
+    global l
+    global sigma
+    global rSigma
+    global ki
+    global kf
+    return dydt(l,m,sigma,rSigma,ki,kf,y)
+    
+y0=[10.0]*(2*(l+1))
+
+
+soln = odeint(f,y0, t)
+I=[]
+F=[]
+for i in range(l+1):
+    I.append(soln[:,i])
+for i in range(l+1,2*(l+1)):
+    F.append(soln[:,i])
+    
+
+plt.figure()
+for i in range(l+1):
+    plt.plot(t,I[i],label='I['+str(i)+']')
+plt.legend(loc=0)
+plt.show()
