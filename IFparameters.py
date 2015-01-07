@@ -6,9 +6,10 @@ SIGMA = [0.3, 1.0, 3.0, 10.0]
 RSIGMA = [0.3, 1.0, 3.0, 10.0]
 KI = [1.0, 3.0, 10.0]
 KF = [1.0, 3.0, 10.0]
-
+File=''
 def writesh(l,m,sigma,rSigma,ki,kf):
     filename= 's'+str(l)+'-'+str(m)+'-'+str(sigma)+'-'+str(rSigma)+'-'+str(ki)+'-'+str(kf)+'.sh'
+    global File
     File = open(filename, 'w')
     def getout(str):
         global File
