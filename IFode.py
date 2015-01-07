@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import numpy as np
+import sys
 from math import *
 from scipy import special as sp
 import matplotlib.pyplot as plt
@@ -18,7 +19,7 @@ def Delta(x,y):
 
 def Nkdd(l,k,df,dt):
     '''number of sequences which are on the dt shell in distance k away from df shell'''
-    nkdd = 0
+    nkdd = 0.0
     for i in range(0,min(df,dt)+1):
         nkdd+=sp.binom(df,min(df,dt)-i)*sp.binom(l-df,max(0,dt-df)+i)*Delta(k,abs(dt-df)+2*i)
     
@@ -61,13 +62,12 @@ def dydt(l,m,sigma,rSigma,ki,kf,y):
     F=y[l+1:]
     return dIdt(l,m,sigma,rSigma,ki,kf,I,F)+dFdt(l,m,sigma,ki,kf,I,F)
 
-
-l=15
-m=4
-sigma=3.0
-rSigma=0.5
-ki=2.0
-kf=2.0
+l=int(sys.argv[1])
+m=float(sys.argv[2])
+sigma=float(sys.argv[3])
+rSigma=float(sys.argv[4])
+ki=float(sys.argv[5])
+kf=float(sys.argv[6])
 t=np.linspace(0, 10., 100)
 def f(y,t):
     global m
@@ -94,4 +94,4 @@ plt.figure()
 for i in range(l+1):
     plt.plot(t,I[i],label='I['+str(i)+']')
 plt.legend(loc=0)
-plt.show()
+plt.savefig(str(l)+'-'+str(m)+'-'+str(sigma)+'-'+str(rSigma)+'-'+str(ki)+'-'+str(kf)+'.png')
