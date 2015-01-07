@@ -80,8 +80,9 @@ def f(y,t):
     
 y0=[10.0]*(2*(l+1))
 
-
+print('i ma going to solve ode')
 soln = odeint(f,y0, t)
+print('ode solved')
 I=[]
 F=[]
 for i in range(l+1):
@@ -91,6 +92,7 @@ for i in range(l+1,2*(l+1)):
     
 
 plt.figure()
+print('plt passed')
 for i in range(l+1):
     plt.plot(t,I[i],label='I['+str(i)+']')
 plt.legend(loc=0)
