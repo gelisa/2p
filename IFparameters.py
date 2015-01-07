@@ -19,7 +19,7 @@ def writesh(l,m,sigma,rSigma,ki,kf):
     getout('#$ -S /bin/bash')
     getout('#$ -N twoP')
     getout('#$ -cwd')
-    getout('#$ -q ' + whichQueue(names[i],queues))
+    getout('#$ -q ' + 'cpu_short'))
     getout('#$ -pe openmpi 1')
     getout('#$ -P kenprj')
     getout('/cavern/eliza/origins/twoPolymers/IFode.py '+str(l)+' '+str(m)+' '+str(sigma)+' '+str(rSigma)+' '+str(ki)+' '+str(kf))
