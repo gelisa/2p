@@ -24,7 +24,7 @@ def writesh(l,m,sigma,rSigma,ki,kf):
     getout('#$ -P kenprj')
     getout('/cavern/eliza/origins/twoPolymers/IFode.py '+str(l)+' '+str(m)+' '+str(sigma)+' '+str(rSigma)+' '+str(ki)+' '+str(kf))
 
-    file.close()
+    File.close()
     print('.sh written')
     return filename
 
