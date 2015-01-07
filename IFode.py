@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/home/eliza/anaconda3/bin/python3.4
 import numpy as np
 import sys
 from math import *
@@ -73,8 +73,8 @@ ki=float(sys.argv[5])
 kf=float(sys.argv[6])
 t=np.linspace(0, 10., 100)
 def f(y,t):
-    global m
     global l
+    global m
     global sigma
     global rSigma
     global ki
@@ -83,9 +83,7 @@ def f(y,t):
     
 y0=[10.0]*(2*(l+1))
 
-print('i ma going to solve ode')
 soln = odeint(f,y0, t)
-print('ode solved')
 I=[]
 F=[]
 for i in range(l+1):
@@ -95,8 +93,7 @@ for i in range(l+1,2*(l+1)):
     
 
 plt.figure()
-print('plt passed')
 for i in range(l+1):
     plt.plot(t,I[i],label='I['+str(i)+']')
 plt.legend(loc=0)
-plt.savefig(str(l)+'-'+str(m)+'-'+str(sigma)+'-'+str(rSigma)+'-'+str(ki)+'-'+str(kf)+'.png')
+plt.savefig('pics/'+str(l)+'-'+str(m)+'-'+str(sigma)+'-'+str(rSigma)+'-'+str(ki)+'-'+str(kf)+'.png')
