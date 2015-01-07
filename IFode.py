@@ -4,6 +4,9 @@ import sys
 from math import *
 from scipy import special as sp
 import matplotlib.pyplot as plt
+import matplotlib.use as plotuse
+# Force matplotlib to not use any Xwindows backend.
+plotuse('Agg')
 from scipy.integrate import odeint
 
 def G(x,sigma):
