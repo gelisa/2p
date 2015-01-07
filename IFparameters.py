@@ -36,5 +36,5 @@ for l in L:
                     for kf in KF:
                         scriptName=writesh(l,m,sigma,rSigma,ki,kf)
                         os.system('chmod ug+x '+scriptName)
-                        os.system('./'+scriptName)
+                        os.system('qsub '+scriptName)
                         
