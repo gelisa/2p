@@ -96,4 +96,5 @@ plt.figure()
 for i in range(l+1):
     plt.plot(t,I[i],label='I['+str(i)+']')
 plt.legend(loc=0)
+plt.title(str(l)+'-'+str(m)+'-'+str(sigma)+'-'+str(rSigma)+'-'+str(ki)+'-'+str(kf))
 plt.savefig('pics/'+str(l)+'-'+str(m)+'-'+str(sigma)+'-'+str(rSigma)+'-'+str(ki)+'-'+str(kf)+'.png')
